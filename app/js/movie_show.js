@@ -19,7 +19,7 @@ MovieApp.getMovie = function(){
 	}).done(function(data){
 		MovieApp.renderHTML(data);
 	}).fail(function(jqXHR, textStatus, errorThrown){
-		console.log('error!!!');
+		console.log(jqXHR, textStatus, errorThrown);
 	});
 };
 
@@ -30,7 +30,7 @@ MovieApp.renderHTML = function(movie){
 				html += '<div class="movieReviews"><p class="reviewShowReviewer">'+movie.reviews[i].reviewer+'</p><p class="reviewShowStars">'+movie.reviews[i].stars+'</p><p class="reviewShowComment">'+movie.reviews[i].comment+'</p></div>';
 			}
 		}
-		$('#movieShow').html(html);	
+		$('#movieShow').html(html);
 };
 
 $(document).ready(function(){
