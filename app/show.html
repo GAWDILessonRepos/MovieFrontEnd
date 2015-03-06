@@ -9,34 +9,27 @@
   </head>
   <body>
     <nav></nav>
-    <h1>Movies</h1>
+    <h1>Movie</h1>
     
-    <div id="movieIndex"></div>
-    <div id="movieFormContainer">
-        <form id="movieForm">
+    <div id="movieShow"></div>
+
+    <div id="reviewsIndex"></div>
+
+    <div id="reviewFormContainer">
+        <form id="reviewForm">
             <div class="formGroup">
-                <label for="movieTitle">Title</label>
-                <input id="movieTitle" type="text" placeholder="Title"/>
+                <label for="reviewReviewer">Reviewer</label>
+                <input id="reviewReviewer" type="text" placeholder="Reviewer"/>
             </div>
 
             <div class="formGroup">
-                <label for="movieGross">Gross</label>
-                <input id="movieGross" type="number" placeholder="Gross"/>
+                <label for="reviewStars">Stars</label>
+                <input id="reviewStars" type="number" placeholder="Stars (1-5)"/>
             </div>
 
             <div class="formGroup">
-                <label for="movieRelease">Release</label>
-                <input id="movieRelease" type="date" placeholder="yyyy/mm/dd"/>
-            </div>
-
-            <div class="formGroup">
-                <label for="movieRating">MPAA Rating</label>
-                <input id="movieRating" type="text" placeholder="Rating"/>
-            </div>
-
-            <div class="formGroup">
-                <label for="movieDescription">Description</label>
-                <textarea id="movieDescription"></textarea>
+                <label for="reviewComment">Comment</label>
+                <textarea id="reviewComment"></textarea>
             </div>
 
         </form>
