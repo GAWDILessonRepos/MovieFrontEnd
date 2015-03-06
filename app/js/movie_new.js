@@ -73,7 +73,6 @@ MovieApp.goToMovie = function(data){
 };
 
 $(document).ready(function(){
-  // window.location.href = 'http://www.google.com';
   console.log('movie_new loaded');
   $('#movieForm').submit(MovieApp.createMovie);
 });
