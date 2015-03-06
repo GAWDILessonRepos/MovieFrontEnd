@@ -22,17 +22,8 @@ MovieApp.createMovie = function(event){
       }
     }
   }).done(function(data){
-    MovieApp.resetMovieForm();
     MovieApp.goToMovie(data);
   }).fail();
-};
-
-MovieApp.resetMovieForm = function(){
-  $('input#movieTitle').val('');
-  $('input#movieGross').val('');
-  $('input#movieRelease').val('');
-  $('input#movieRating').val('');
-  $('textArea#movieDescription').val('');
 };
 
 MovieApp.goToMovie = function(data){
