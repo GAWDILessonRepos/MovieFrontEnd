@@ -7,7 +7,7 @@ var MovieApp = MovieApp || {
 };
 
 MovieApp.createHTML = function(movie){
-  var html = '<li><article><h3>Title: <a href="/movies/' + movie.id + '" title="' + movie.title + '">' + movie.title + '</h3></a><h4>Rating: ' + movie.rating + '<p>' + movie.description + '</p><p>Reviews: ' + movie.reviews.length + '</p></article></li>';
+  var html = '<li><article><h3>Title: <a href="/show.html?movie=' + movie.id + '" title="' + movie.title + '">' + movie.title + '</h3></a><h4>Rating: ' + movie.rating + '<p>' + movie.description + '</p><p>Reviews: ' + movie.reviews.length + '</p></article></li>';
   $('ul#movies').append(html);
 };
 
