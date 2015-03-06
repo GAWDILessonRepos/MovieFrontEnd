@@ -35,14 +35,15 @@ MovieApp.renderEditForm = function(event, movie){
 			'</form>'].join('');
 
 	$('#movieShow').html(html);
-	$('#movieEditTitle').val(movie.title)
+	$('#movieEditTitle').val(movie.title);
 	$('#movieEditGross').val(movie.gross);	
 	$('#movieEditRelease').val(movie.release);
 	$('#movieEditRating').val(movie.rating);
 	$('#movieEditDescription').val(movie.description);
 
+	var $editform = $('#movieEditForm');
 	$('#movieSubmit').on('click', function(event){
-		MovieApp.editMovie(event, ($'#movieEditForm'));
+		MovieApp.editMovie(event, $editform);
 	});
 };
 
@@ -62,7 +63,7 @@ MovieApp.editMovie = function(){
 	      }
 	    }
   }).done(function(data){
-    MovieApp.goToMovie(data);
+    MovieApp.renderHTML(data);
   }).fail();
 };
 
