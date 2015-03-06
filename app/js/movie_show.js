@@ -24,14 +24,19 @@ MovieApp.getMovie = function(){
 };
 
 MovieApp.renderHTML = function(movie){
-	var html = '<div class="fullMovie"><h3 class="movieShowTitle">'+movie.title+'</h3><h4 class="movieShowRating">'+movie.rating+'</h4><h4 class="movieShowRelease">'+movie.release+'</h4><p class="movieShowDescription">'+movie.description+'</p></div>';
+	var html = '<div class="fullMovie"><h3 class="movieShowTitle">'+movie.title+'</h3><button id="editBtn">Edit</button><h4 class="movieShowRating">'+movie.rating+'</h4><h4 class="movieShowRelease">'+movie.release+'</h4><p class="movieShowDescription">'+movie.description+'</p></div>';
 		if (movie.reviews){
 			for (var i=0; i<movie.reviews.length; i++){
 				html += '<div class="movieReviews"><p class="reviewShowReviewer">'+movie.reviews[i].reviewer+'</p><p class="reviewShowStars">'+movie.reviews[i].stars+'</p><p class="reviewShowComment">'+movie.reviews[i].comment+'</p></div>';
 			}
 		}
-		$('#movieShow').html(html);
+
+	$('#movieShow').html(html);
+	$('#editBtn').on('click', function(event){
+		MovieApp.renderEditForm(event, movie);
+	});
 };
+
 
 $(document).ready(function(){
   console.log('movie_show loaded');
