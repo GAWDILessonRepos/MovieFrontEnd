@@ -8,19 +8,20 @@ var MovieApp = MovieApp || {
 MovieApp.getParams = function(){
 	var params = window.location.search;
 	var re = /\d/;
-	return re.exec(params);
+	return re.exec(params).join('');
 };
 
 MovieApp.getMovie = function(){
-	var id = getParams();
-	$.ajax({
-		url: MovieApp.url + '/movies/' + id,
-		type: 'GET'
-	}).done(function(data){
-		console.log(data)
-	}).fail(function(jqXHR, textStatus, errorThrown){
-		console.log('error!!!')
-	});
+	var id = MovieApp.getParams();
+	console.log(MovieApp.url + '/movies/' + id);
+	// $.ajax({
+	// 	url: MovieApp.url + '/movies/' + id,
+	// 	type: 'GET'
+	// }).done(function(data){
+	// 	console.log(data);
+	// }).fail(function(jqXHR, textStatus, errorThrown){
+	// 	console.log('error!!!');
+	// });
 };
 
 $(document).ready(function(){
