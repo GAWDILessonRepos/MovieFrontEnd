@@ -2,11 +2,13 @@
 'use strict';
 
 var MovieApp = MovieApp || {
-    url: 'http:localhost:3000'
+    url: 'http://localhost:3000'
 };
 
 MovieApp.createMovie = function(event){
-  if (event.preventDefault) event.preventDefault();
+  if (event.preventDefault) {
+    event.preventDefault();
+  }
   $.ajax({
     url: MovieApp.url + '/movies',
     type: 'POST',
@@ -35,10 +37,10 @@ MovieApp.resetMovieForm = function(){
 
 MovieApp.goToMovie = function(data){
   console.log(data);
+  window.location.href = 'http://localhost:9000/show.html?movie=' + data.id;
 };
 
 $(document).ready(function(){
-  // window.location.href = 'http://www.google.com';
   console.log('movie_new loaded');
   $('#movieForm').submit(MovieApp.createMovie);
 });
