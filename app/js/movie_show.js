@@ -23,8 +23,24 @@ MovieApp.getMovie = function(){
 	});
 };
 
+MovieApp.getAverage = function(movie){
+	if (movie.reviews) {
+		var sum = movie.reviews.reduce(function(count, review) {return count + review.stars; }, 0);
+		var withStars = movie.reviews.reduce(function(count, review){
+			if (review.stars){
+				return count + 1;
+			} else {
+				return count;
+			}
+		}, 0);
+		return (sum/withStars).toFixed(1);
+	} else {
+		return 'No reviews yet'
+	}
+};
+
 MovieApp.renderHTML = function(movie){
-	var html = '<div class="fullMovie"><h3 class="movieShowTitle">'+movie.title+'</h3><h4 class="movieShowRating">'+movie.rating+'</h4><h4 class="movieShowRelease">'+movie.release+'</h4><p class="movieShowDescription">'+movie.description+'</p></div>';
+	var html = '<div class="fullMovie"><h3 class="movieShowTitle">'+movie.title+'</h3><h4 class="movieShowRating">'+movie.rating+'</h4><h4 class="movieShowRelease">'+movie.release+ '<h4>Average User Stars: '+MovieApp.getAverage(movie)+'</h4>'       +'</h4><p class="movieShowDescription">'+movie.description+'</p></div>';
 		if (movie.reviews){
 			for (var i=0; i<movie.reviews.length; i++){
 				html += '<div class="movieReviews"><p class="reviewShowReviewer">'+movie.reviews[i].reviewer+'</p><p class="reviewShowStars">'+movie.reviews[i].stars+'</p><p class="reviewShowComment">'+movie.reviews[i].comment+'</p></div>';
