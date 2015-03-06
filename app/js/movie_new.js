@@ -36,8 +36,8 @@ MovieApp.resetMovieForm = function(){
 };
 
 MovieApp.goToMovie = function(data){
-  console.log(data);
   window.location.href = 'http://localhost:9000/show.html?movie=' + data.id;
+
 };
 
 $(document).ready(function(){
