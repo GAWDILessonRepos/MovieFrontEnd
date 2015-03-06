@@ -27,7 +27,7 @@ MovieApp.createMovie = function(event){
 };
 
 MovieApp.goToMovie = function(data){
-  window.location.href = 'http://localhost:9000/show.html?movie=' + data.id;
+  window.location.href = '/show.html?movie=' + data.id;
 
 };
 
