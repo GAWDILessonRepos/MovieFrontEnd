@@ -23,10 +23,10 @@ MovieApp.renderSomeMovies = function(movies){
   if (window.location.search){
     var page = MovieApp.getParams();
   } else {
-    var page = 0;
+    var page = 1;
   }
-  var start = page * 3;
-  var end = (page + 1) * 3;
+  var start = (page-1) * 3;
+  var end = page * 3;
   if (movies.length < end) {
     end = movies.length
   }
@@ -42,7 +42,8 @@ MovieApp.renderSomeMovies = function(movies){
 MovieApp.renderPageButtons = function(){
   if (window.location.search &&MovieApp.getParams() === '1'){
     $('#movieIndex').append('<a id=prev href='+'http://localhost:9000'+'> << </a>');
-    $('#movieIndex').append('<a id=next href=/?page=2> >> </a>');
+    $('#movieIndex').append('<h4>Page 1</h4>')
+    $('#movieIndex').append('<a id=next href=/?page=3> >> </a>');
   } else if (window.location.search){
     var page = Number(MovieApp.getParams());
     var next = page + 1;
@@ -50,7 +51,7 @@ MovieApp.renderPageButtons = function(){
     $('#movieIndex').append('<a id=prev href=/?page='+ prev +'> << </a>');
     $('#movieIndex').append('<a id=next href=/?page='+ next +'> >> </a>');
   } else {
-    $('#movieIndex').append('<a id= next href=/?page=1> >> </a>');
+    $('#movieIndex').append('<a id= next href=/?page=2> >> </a>');
   }
 };
 
