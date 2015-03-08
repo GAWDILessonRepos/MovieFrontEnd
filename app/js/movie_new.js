@@ -5,13 +5,13 @@ var MovieApp = MovieApp || {
     url: 'http://localhost:3000'
 };
 
-MovieApp.editMovie = function(event, form){
+MovieApp.editMovie = function(event){
   if (event.preventDefault) {
     event.preventDefault();
   }
 
   var id = MovieApp.getParams();
-  
+
   $.ajax({
     url: MovieApp.url + '/movies/' + id,
     type: 'POST',

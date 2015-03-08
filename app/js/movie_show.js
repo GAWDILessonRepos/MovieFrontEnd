@@ -35,7 +35,7 @@ MovieApp.getAverage = function(movie){
 		}, 0);
 		return (sum/withStars).toFixed(1);
 	} else {
-		return 'No reviews yet'
+		return 'No reviews yet';
 	}
 };
 

@@ -40,7 +40,7 @@ MovieApp.renderPageButtons = function(){
     $('#movieIndex').append('<a href=/?page='+ prev +'> << </a>');
     $('#movieIndex').append('<a href=/?page='+ next +'> >> </a>');
   } else {
-    $('#movieIndex').append('<a href=/?page=1> >> </a>')
+    $('#movieIndex').append('<a href=/?page=1> >> </a>');
   }
 };
 
