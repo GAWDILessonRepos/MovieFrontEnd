@@ -15,13 +15,38 @@ MovieApp.renderMovie = function(movie){
   MovieApp.createHTML(movie);
 };
 
-MovieApp.renderMovies = function(movies){
-  movies.forEach(MovieApp.renderMovie);
+// MovieApp.renderMovies = function(movies){
+//   movies.forEach(MovieApp.renderMovie);
+// };
+
+MovieApp.renderSomeMovies = function(movies){
+  for (var i = 0; i < 3; i++){
+    MovieApp.renderMovie(movies[i]);
+  }
+  console.log(movies.length);
+  if (movies.length > 3){
+    MovieApp.renderPageButtons();
+  }
+};
+
+MovieApp.renderPageButtons = function(){
+  if (window.location.search &&MovieApp.getParams() === '1'){
+    $('#movieIndex').append('<a href='+'http://localhost:9000'+'> << </a>');
+    $('#movieIndex').append('<a href=/?page=2> >> </a>');
+  } else if (window.location.search){
+    var page = Number(MovieApp.getParams());
+    var next = page + 1;
+    var prev = page - 1;
+    $('#movieIndex').append('<a href=/?page='+ prev +'> << </a>');
+    $('#movieIndex').append('<a href=/?page='+ next +'> >> </a>');
+  } else {
+    $('#movieIndex').append('<a href=/?page=1> >> </a>')
+  }
 };
 
 MovieApp.showMovies = function(){
   $.get(MovieApp.url, function(data) {
-    MovieApp.renderMovies(data);
+    MovieApp.renderSomeMovies(data);
   });
 };
 

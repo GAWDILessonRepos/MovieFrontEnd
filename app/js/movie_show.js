@@ -56,5 +56,7 @@ MovieApp.renderHTML = function(movie){
 
 $(document).ready(function(){
   console.log('movie_show loaded');
-  MovieApp.getMovie();
+  if (window.location.search.indexOf('movie') !== -1){
+	  MovieApp.getMovie();
+	}
 });
