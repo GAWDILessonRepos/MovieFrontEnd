@@ -20,27 +20,37 @@ MovieApp.renderMovie = function(movie){
 // };
 
 MovieApp.renderSomeMovies = function(movies){
-  for (var i = 0; i < 3; i++){
+  if (window.location.search){
+    var page = MovieApp.getParams();
+  } else {
+    var page = 0;
+  }
+  var start = page * 3;
+  var end = (page + 1) * 3;
+  if (movies.length < end) {
+    end = movies.length
+  }
+  for (var i = start; i < end; i++){
     MovieApp.renderMovie(movies[i]);
   }
-  console.log(movies.length);
-  if (movies.length > 3){
-    MovieApp.renderPageButtons();
+  MovieApp.renderPageButtons();
+  if (movies.length === end) {
+    $('#next').remove();
   }
 };
 
 MovieApp.renderPageButtons = function(){
   if (window.location.search &&MovieApp.getParams() === '1'){
-    $('#movieIndex').append('<a href='+'http://localhost:9000'+'> << </a>');
-    $('#movieIndex').append('<a href=/?page=2> >> </a>');
+    $('#movieIndex').append('<a id=prev href='+'http://localhost:9000'+'> << </a>');
+    $('#movieIndex').append('<a id=next href=/?page=2> >> </a>');
   } else if (window.location.search){
     var page = Number(MovieApp.getParams());
     var next = page + 1;
     var prev = page - 1;
-    $('#movieIndex').append('<a href=/?page='+ prev +'> << </a>');
-    $('#movieIndex').append('<a href=/?page='+ next +'> >> </a>');
+    $('#movieIndex').append('<a id=prev href=/?page='+ prev +'> << </a>');
+    $('#movieIndex').append('<a id=next href=/?page='+ next +'> >> </a>');
   } else {
-    $('#movieIndex').append('<a href=/?page=1> >> </a>');
+    $('#movieIndex').append('<a id= next href=/?page=1> >> </a>');
   }
 };
 
