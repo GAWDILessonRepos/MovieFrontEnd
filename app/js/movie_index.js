@@ -28,7 +28,7 @@ MovieApp.renderSomeMovies = function(movies){
   var start = (page-1) * 3;
   var end = page * 3;
   if (movies.length < end) {
-    end = movies.length
+    end = movies.length;
   }
   for (var i = start; i < end; i++){
     MovieApp.renderMovie(movies[i]);
@@ -40,15 +40,16 @@ MovieApp.renderSomeMovies = function(movies){
 };
 
 MovieApp.renderPageButtons = function(){
-  if (window.location.search &&MovieApp.getParams() === '1'){
+  if (window.location.search &&MovieApp.getParams() === '2'){
     $('#movieIndex').append('<a id=prev href='+'http://localhost:9000'+'> << </a>');
-    $('#movieIndex').append('<h4>Page 1</h4>')
+    $('#movieIndex').append('<h4>Page 2</h4>');
     $('#movieIndex').append('<a id=next href=/?page=3> >> </a>');
   } else if (window.location.search){
     var page = Number(MovieApp.getParams());
     var next = page + 1;
     var prev = page - 1;
     $('#movieIndex').append('<a id=prev href=/?page='+ prev +'> << </a>');
+    $('#movieIndex').append('<h4>Page '+MovieApp.getParams() +'</h4>');
     $('#movieIndex').append('<a id=next href=/?page='+ next +'> >> </a>');
   } else {
     $('#movieIndex').append('<a id= next href=/?page=2> >> </a>');
