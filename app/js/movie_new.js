@@ -10,8 +10,6 @@ MovieApp.createMovie = function(event){
     event.preventDefault();
   }
 
-  var id = MovieApp.getParams();
-
   $.ajax({
     url: MovieApp.url + '/movies/',
     type: 'POST',
@@ -25,6 +23,7 @@ MovieApp.createMovie = function(event){
       }
     }
   }).done(function(data){
+    console.log(data);
     MovieApp.goToMovie(data);
   }).fail();
 };
