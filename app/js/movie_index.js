@@ -41,7 +41,7 @@ MovieApp.renderSomeMovies = function(movies){
 
 MovieApp.renderPageButtons = function(){
   if (window.location.search &&MovieApp.getParams() === '2'){
-    $('#movieIndex').append('<a id=prev href='+'http://localhost:9000'+'> << </a>');
+    $('#movieIndex').append('<a id="prev" href='+'http://localhost:9000'+'> << </a>');
     $('#movieIndex').append('<h4>Page 2</h4>');
     $('#movieIndex').append('<a id=next href=/?page=3> >> </a>');
   } else if (window.location.search){
@@ -56,6 +56,27 @@ MovieApp.renderPageButtons = function(){
   }
 };
 
+MovieApp.showName = function(){
+  if (localStorage.authToken){
+    MovieApp.authToken = localStorage.authToken;
+    $.ajaxPrefilter(function(options){
+      options.headers = {};
+      options.headers['AUTHORIZATION'] = MovieApp.authToken;
+    });
+    $.ajax({
+      url: MovieApp.url + '/users/',
+      type: 'GET',
+      dataType: 'json',
+    })
+    .done(function(data){
+      $('#movieIndex').append(data.name);
+    })
+    .fail(function(){
+      console.log('fail');
+    });
+  }
+};
+
 MovieApp.showMovies = function(){
   $.get(MovieApp.url, function(data) {
     MovieApp.renderSomeMovies(data);
@@ -65,4 +86,5 @@ MovieApp.showMovies = function(){
 $(document).ready(function(){
   console.log('movie_index loaded');
   MovieApp.showMovies();
+  MovieApp.showName();
 });
