@@ -5,7 +5,7 @@ var MovieApp = MovieApp || {
     url: 'http://localhost:3000'
 };
 
-MovieApp.editMovie = function(event){
+MovieApp.createMovie = function(event){
   if (event.preventDefault) {
     event.preventDefault();
   }
@@ -13,14 +13,14 @@ MovieApp.editMovie = function(event){
   var id = MovieApp.getParams();
 
   $.ajax({
-    url: MovieApp.url + '/movies/' + id,
+    url: MovieApp.url + '/movies/',
     type: 'POST',
     data: {
       movie: {
         title: $('input#movieTitle').val(),
         gross: $('input#movieGross').val(),
         release: $('input#movieRelease').val(),
-        rating: $('input#movierating').val(),
+        rating: $('#movieRating').val(),
         description: $('textarea#movieDescription').val()
       }
     }
