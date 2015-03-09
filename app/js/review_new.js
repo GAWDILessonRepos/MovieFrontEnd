@@ -8,13 +8,19 @@ var MovieApp = MovieApp || {
 MovieApp.createReview = function(event){
   var id = MovieApp.getParams();
   event.preventDefault();
+  var stars = 0;
+  if ($('#reviewStars').val() != 0){
+    stars = $('#reviewStars').val();
+  }
+
+
   $.ajax({
     url: MovieApp.url + '/movies/' + id + '/reviews',
     type: 'POST',
     data: {
       review: {
         comment: $('textarea#reviewComment').val(),
-        stars: $('input#reviewStars').val(),
+        stars: stars,
         reviewer: $('input#reviewReviewer').val()
       }
     }
