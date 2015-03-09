@@ -27,7 +27,7 @@ MovieApp.getAverage = function(movie){
 	if (movie.reviews) {
 		var sum = movie.reviews.reduce(function(count, review) {return count + review.stars; }, 0);
 		var withStars = movie.reviews.reduce(function(count, review){
-			if (review.stars){
+			if (review.stars != 0){
 				return count + 1;
 			} else {
 				return count;
