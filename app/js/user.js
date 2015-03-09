@@ -18,7 +18,7 @@ MovieApp.run = function(){
   $('#signUp').on('submit', MovieApp.signUp);
 };
 
-MovieApp.signUp = function (){
+MovieApp.signUp = function (event){
   event.preventDefault();
 
   $.ajax({
@@ -41,16 +41,16 @@ MovieApp.loginSuccess = function(userData){
   window.location.href = '/';
 };
 
-MovieApp.signIn = function(){
+MovieApp.signIn = function(event){
   event.preventDefault();
 
   $.ajax({
     url: MovieApp.url + '/users/sign_in',
     type: 'POST',
-    data: {user:{
-      name: $('#signInName').val(),
+    data: {
+      email: $('#signInEmail').val(),
       password: $('#signInPassword').val()
-    }}
+    }
   }).done(MovieApp.loginSuccess).fail(function(err){
     console.log(err);
   });
