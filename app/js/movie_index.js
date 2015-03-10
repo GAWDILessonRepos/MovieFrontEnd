@@ -26,6 +26,7 @@ MovieApp.renderSomeMovies = function(movies){
   } else {
     page = 1;
   }
+
   var start = (page-1) * 3;
   var end = page * 3;
   if (movies.length < end) {
