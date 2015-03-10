@@ -16,6 +16,12 @@ MovieApp.run = function(){
 
   $('#signIn').on('submit', MovieApp.signIn);
   $('#signUp').on('submit', MovieApp.signUp);
+  $('#log_out').on('click', MovieApp.logOut);
+};
+
+MovieApp.logOut = function(event){
+  event.preventDefault();
+  localStorage.authToken = '';
 };
 
 MovieApp.signUp = function (event){
