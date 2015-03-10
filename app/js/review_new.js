@@ -9,7 +9,7 @@ MovieApp.createReview = function(event){
   var id = MovieApp.getParams();
   event.preventDefault();
   var stars = 0;
-  if ($('#reviewStars').val() != 0){
+  if ($('#reviewStars').val() !== 0){
     stars = $('#reviewStars').val();
   }
 

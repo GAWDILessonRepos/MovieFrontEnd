@@ -67,7 +67,7 @@ MovieApp.signIn = function(event){
 MovieApp.setupAjaxRequests = function(){
   $.ajaxPrefilter(function(options){
     options.headers = {};
-    options.headers['AUTHORIZATION'] = "Token token=" + MovieApp.authToken;
+    options.headers.AUTHORIZATION = 'Token token=' + MovieApp.authToken;
   });
 };
 

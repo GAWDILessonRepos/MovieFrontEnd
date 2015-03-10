@@ -20,10 +20,11 @@ MovieApp.renderMovie = function(movie){
 // };
 
 MovieApp.renderSomeMovies = function(movies){
+  var page;
   if (window.location.search){
-    var page = MovieApp.getParams();
+    page = MovieApp.getParams();
   } else {
-    var page = 1;
+    page = 1;
   }
   var start = (page-1) * 3;
   var end = page * 3;
@@ -61,7 +62,7 @@ MovieApp.showName = function(){
     MovieApp.authToken = localStorage.authToken;
     $.ajaxPrefilter(function(options){
       options.headers = {};
-      options.headers['AUTHORIZATION'] = MovieApp.authToken;
+      options.headers.AUTHORIZATION = MovieApp.authToken;
     });
     $.ajax({
       url: MovieApp.url + '/users/',
