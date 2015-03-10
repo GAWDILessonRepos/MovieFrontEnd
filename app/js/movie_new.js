@@ -34,6 +34,8 @@ MovieApp.goToMovie = function(data){
 };
 
 $(document).ready(function(){
+  MovieApp.setupAjaxRequests();
+
   console.log('movie_new loaded');
   $('#movieForm').submit(MovieApp.createMovie);
 });

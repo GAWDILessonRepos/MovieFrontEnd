@@ -1,0 +1,60 @@
+@mixin default{
+  margin: 0px;
+  padding: 0px;
+  border: 0px;
+}
+
+body{
+  @include default;
+  background-color: #bbbbbb;
+}
+
+nav.navbar {
+
+  ul#nav {
+    display: flex;
+    list-style: none;
+    li {
+      align-self: center;
+      a{
+        color: #000;
+        text-decoration: none;
+        margin:0 10px;
+        &:hover{
+          font-weight: bold;
+        }
+      }
+      h1{
+        color: #ff8100;
+      }
+    }
+  }
+}
+
+#movies{
+  display: flex;
+  list-style-type: none;
+  li{
+    background-color: #dddddd;
+    margin: 0 10px;
+    width: 500px;
+    article{
+      padding-left:20px;
+    }
+  }
+}
+
+#movieFormContainer{
+  display: flex;
+  flex-direction: column;
+  .formGroup{
+    input{
+      align-self:center;
+    }
+  }
+
+}
+
+
+
+
